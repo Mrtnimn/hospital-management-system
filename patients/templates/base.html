@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/main.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg site-nav">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}"><span class="brand-mark">+</span> Hospital Care</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="nav-link nav-link-cta" href="{% url 'booking' %}">Book an appointment</a>
+                    <a class="nav-link" href="{% url 'profile' %}">My profile</a>
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    <main></main>
+    {% endblock %}
+
+    <footer class="site-footer text-white">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <h2 class="h5">Hospital Care</h2>
+                    <p class="text-white-50 mb-0">Simple, patient-focused care management for every step of your health
+                        journey.</p>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h2 class="h6 text-uppercase">Explore</h2>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="link-light text-decoration-none" href="{% url 'index' %}">Home</a></li>
+                        <li><a class="link-light text-decoration-none" href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li><a class="link-light text-decoration-none" href="{% url 'booking' %}">Appointments</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h2 class="h6 text-uppercase">Account</h2>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="link-light text-decoration-none" href="{% url 'profile' %}">Profile</a></li>
+                        <li><a class="link-light text-decoration-none" href="{% url 'login' %}">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <p class="small text-white-50 mb-0">&copy; 2026 Hospital Care. Your health comes first.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

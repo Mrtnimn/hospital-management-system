@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Book an appointment | Hospital Care{% endblock %}
+{% block content %}
+<section class="bg-success text-white py-5">
+    <div class="container py-4">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <span class="badge text-bg-light text-success mb-3">Appointments</span>
+                <h1 class="display-5 fw-bold">Make time for your health.</h1>
+                <p class="lead mb-0">Choose a convenient date and tell us how we can help. Our care team will be ready for you.</p>
+            </div>
+            <div class="col-lg-5">
+                <a href="https://unsplash.com/s/photos/medical-appointment" aria-label="View medical appointment photography on Unsplash">
+                    <img class="img-fluid rounded-4 shadow" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Healthcare professional preparing for an appointment">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <h2 class="h4 mb-4">Appointment details</h2>
+                    <form>
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6"><label class="form-label" for="appointmentType">Visit type</label><select class="form-select" id="appointmentType"><option selected>General consultation</option><option>Follow-up visit</option><option>Specialist consultation</option></select></div>
+                            <div class="col-md-6"><label class="form-label" for="appointmentDate">Preferred date</label><input class="form-control" id="appointmentDate" type="date"></div>
+                            <div class="col-12"><label class="form-label" for="appointmentNote">What would you like help with?</label><textarea class="form-control" id="appointmentNote" rows="4" placeholder="Share a brief note for the care team"></textarea></div>
+                            <div class="col-12"><button class="btn btn-success" type="submit">Request appointment</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

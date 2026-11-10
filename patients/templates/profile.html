@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Profile | Hospital Care{% endblock %}
+{% block content %}
+<section class="bg-secondary text-white py-5">
+    <div class="container py-4">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <span class="badge text-bg-light text-secondary mb-3">Your information</span>
+                <h1 class="display-5 fw-bold">A profile built around you.</h1>
+                <p class="lead mb-0">Keep your contact details current so every interaction with your care team feels personal and prepared.</p>
+            </div>
+            <div class="col-lg-5">
+                <a href="https://unsplash.com/s/photos/patient-care" aria-label="View patient care photography on Unsplash">
+                    <img class="img-fluid rounded-4 shadow " src="https://images.pexels.com/photos/19218034/pexels-photo-19218034.jpeg" alt="Patient receiving attentive care">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <div class="d-flex justify-content-between align-items-center mb-4"><h2 class="h4 mb-0">Personal details</h2><span class="badge text-bg-success">Patient</span></div>
+                    <form>
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6"><label class="form-label" for="fullName">Full name</label><input class="form-control" id="fullName" type="text" placeholder="Your full name"></div>
+                            <div class="col-md-6"><label class="form-label" for="phone">Phone number</label><input class="form-control" id="phone" type="tel" placeholder="Your phone number"></div>
+                            <div class="col-12"><label class="form-label" for="profileEmail">Email address</label><input class="form-control" id="profileEmail" type="email" placeholder="you@example.com"></div>
+                            <div class="col-12"><label class="form-label" for="healthNote">Additional note</label><textarea class="form-control" id="healthNote" rows="4" placeholder="Anything your care team should know"></textarea></div>
+                            <div class="col-12"><button class="btn btn-secondary" type="submit">Save profile</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
