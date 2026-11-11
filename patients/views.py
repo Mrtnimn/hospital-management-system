@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm  
+from patients.forms import PatientForm
 
 # Create your views here.
 def index(request):
@@ -34,3 +35,15 @@ def dashboard(request):
 
 def booking(request):
     return render(request, 'booking.html')
+
+def add_patient(request):
+    if request.method == 'POST':
+        form = PatientForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = PatientForm()
+        
+    return render(request, 'add_patient.html', {'form': form})
+    
