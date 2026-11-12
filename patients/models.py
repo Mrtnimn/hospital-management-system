@@ -11,5 +11,5 @@ class Patient(models.Model):
     email = models.EmailField()
     address = models.TextField()
     
-    def _str_(self):
+    def __str__(self):
         return self.patient_id

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm  
 from patients.forms import PatientForm
+from patients.models import Patient
 
 # Create your views here.
 def index(request):
@@ -25,13 +26,15 @@ def userlogin(request):
             return redirect('dashboard')
         else:
             return render(request, 'login.html', {'error': 'Invalid username or password'})
+    
     return render(request, 'login.html')
 
 def profile(request):
     return render(request, 'profile.html')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    patients = Patient.objects.all()
+    return render(request, 'dashboard.html', {'patients': patients})
 
 def booking(request):
     return render(request, 'booking.html')
