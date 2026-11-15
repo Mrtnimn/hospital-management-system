@@ -9,25 +9,33 @@
 </head>
 
 <body>
-    <div>
-        <h2>Add Patient</h2>
-        <form method="post">
-            {% csrf_token %}
-            {% for field in form %}
-            <div class="mb-3">
-                {{field.label_tag}} {{field}}
-                {% if field.errors %}
-                <div style="color: red">
-                    {{field.errors}}
-                </div>
-                {% endif %}
+    <main>
+        <div class="container align-items-center ">
+            <div class="section">
+                <h2>Add Patient</h2>
+                <p>Input patient details</p>
             </div>
-            {% endfor %}
-            <br>
-            <button type="submit">Add Patient</button>
-        </form>
-    </div>
 
+            <!-- FORM CONTAINER -->
+            <div>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        {{field.label_tag}} {{field}}
+                        {% if field.errors %}
+                        <div style="color: red">
+                            {{field.errors}}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <br>
+                    <button type="submit">Add Patient</button>
+                </form>
+            </div>
+        </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

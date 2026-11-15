@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from patients import views
-from django.contrib.auth.views import LogoutView
+# from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +29,5 @@ urlpatterns = [
     path('addpatient/', views.add_patient, name = 'addpatient'),
     path('updatepatient/<patient_id>', views.update_patient, name='updatepatient'),
     path('deletepatient/<patient_id>', views.delete_patient, name='deletepatient'),
-    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    # path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
 ]
