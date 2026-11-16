@@ -3,6 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm  
 from patients.forms import PatientForm
 from patients.models import Patient
+from patients.serializers import PatientSerializer 
+from rest_framework import viewsets
+from rest_framework.permissions import AllowAny 
 
 # Create your views here.
 def index(request):
@@ -69,3 +72,7 @@ def delete_patient(request, patient_id):
     
     return redirect('dashboard')
     
+class PatientViewSet(viewsets.ModelViewSet):
+    queryset = Patient.objects.all()
+    serializer_class = PatientSerializer
+    permission_class = [AllowAny]
