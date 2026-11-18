@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm  
-from django.core.checks import messages
 from patients.forms import PatientForm
 from patients.models import Patient, Payment
 from patients.serializers import PatientSerializer 
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny 
 from django_daraja.mpesa.core import MpesaClient
+from django.contrib import messages
+from django_daraja.mpesa.utils import MpesaResponse
 
 # Create your views here.
 def index(request):
@@ -84,8 +85,8 @@ def make_payment(request):
         patient_name = request.POST.get('patient_name')
         phone_number = request.POST.get('phone_number')
         amount = int(request.POST.get('amount'))
-        
-        # Create a new payment object
+
+        # Create a new Payment object
         payment = Payment.objects.create(
             patient_name = patient_name,
             phone_number = phone_number,
@@ -97,7 +98,7 @@ def make_payment(request):
         transaction_desc = "Payment for hospital services"
         callback_url = "https://darajambili.herokuapp.com/express-payment"
         response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
-        payment.transaction_id = response['CheckoutResponseID']
+        payment.transaction_id = response.checkout_request_id
         payment.save()
         messages.success(request, f"STK Push sent. Please complete the payment on your phone.")
         
