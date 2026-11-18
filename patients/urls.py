@@ -31,8 +31,8 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name = 'dashboard'),
     path('booking/', views.booking, name = 'booking'),
     path('addpatient/', views.add_patient, name = 'addpatient'),
-    path('updatepatient/<patient_id>', views.update_patient, name='updatepatient'),
-    path('deletepatient/<patient_id>', views.delete_patient, name='deletepatient'),
-    # path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
-    path('', include(router.urls))
+    path('updatepatient/<patient_id>/edit', views.update_patient, name='updatepatient'),
+    path('deletepatient/<patient_id>/edit', views.delete_patient, name='deletepatient'),
+    path('', include(router.urls)),
+    path('makepayment/', views.make_payment, name = 'makepayment')
 ]
